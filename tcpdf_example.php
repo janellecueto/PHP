@@ -1,7 +1,23 @@
 <?php
 /**
  * This script uses the tcpdf library to generate a pdf on the server and send to 
- * server printers to print. 
+ * server printers to print. This is also a protocol for saving this information 
+ * in a table in our database. If a 'save' variable is passed via GET, we save the 
+ * pdf on the server and exit, otherwise continue and sent the pdf to a printer.
+ * 
+ * Topics:
+ *  tcpdf
+ *      basic pdf set up 
+ *      tcpdf->Text($x, $y, $text)                      : $x - horizontal point, from left margin as 0
+ *      tcpdf->SetFont($font, $decoration, $size)       : $y - vertical point, from top margin as 0
+ *      tcpdf->SetTextColor($R, $G, $B)
+ *      tcpdf->SetLineWidth($width)
+ *      tcpdf->Line($startX, $startY, $endX, $endY)
+ *      tcpdf->SetLineStyle($width, $cap, $join, $dash)
+ *      tcpdf->GetStringWidth($string) - returns length of string in points (page units)
+ *      tcpdf->Rect($x, $y, $width, $height, $style, $borderstyle, $fillcolor)     : $height is going down from $y starting point 
+ *      tcpdf->MultiCell($width, $height, $text, $border, $align, $fill, $ln=1, $x, $y, $resetH=true)
+ *      tcpdf->AddPage($orientation, $size)
  */
 
 require_once('../tcpdf6/tcpdf.php');                //include tcpdf library
@@ -10,7 +26,6 @@ require_once('../tcpdf6/examples/lang/eng.php');
 // header('Content-type: application/pdf');            //uncomment when testing in browser
 // header('Content-disposition: inline');
 
-$station = $_SERVER['REMOTE_ADDR'];
 $isJanelle = false;
 if(strpos('.0.22', $station)){
     $isJanelle = true;
