@@ -63,6 +63,29 @@ while(odbc_fetch_row($tResult)){
     $insert = substr($insert, 0, -2).")";               //remove comma and space before closing paren
     echo $insert."<br>";        
 
-    if($conn->query($insert)) echo "Entry ".odbc_result($tResult, 1)." successful<br>";
-    else{echo "Entry at ".odbc_result($tResult, 1)." failed to Insert: $conn->error"; exit;}
+    if($conn->query($insert)) echo "Entry ".odbc_result($tResult, 1)." successful<br>";             //make insert query for each row we grab
+    else{echo "Entry at ".odbc_result($tResult, 1)." failed to Insert: $conn->error"; exit;}        //if it fails, we exit and try again
+}
+
+/**************************** fax table ***************************************/
+
+$lastFax = 18000;   //we want all records from 18000 and up
+
+$fOdbc = "SELECT * FROM Faxtr WHERE Serialno >= $lastFax";
+$fResult = odbc_exec($db, $fOdbc);
+
+while(odbc_fetch_row($fResult)) {
+   $insert = "INSERT INTO tc.faxtr VALUES(";
+   for ($i = 1; $i <= odbc_num_fields($fResult); $i++) {
+       if ($i == 1 || $i == 10) $insert .= odbc_result($fResult, $i) . ", ";        //these fields are ints, don't wrap with quotes
+       else if ($i == 11) {
+           if(odbc_result($fResult, 11)) $insert .= "1, ";                          //this field is either 1 or null
+           else $insert .= "null, ";
+       }
+       else $insert .= "'" . preg_replace("/'/", '"', odbc_result($fResult, $i)) . "', ";   //escape the single quote for the query
+   }
+   $insert = substr($insert, 0, -2) . ")";                                          //remove comma and space before closing paren
+
+   if ($conn->query($insert)) echo "Entry " . odbc_result($fResult, 1) . " successful<br>";
+   else {echo "Entry at " . odbc_result($fResult, 1) . " failed to Insert: $conn->error";exit;}
 }
