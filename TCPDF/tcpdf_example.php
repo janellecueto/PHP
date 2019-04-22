@@ -394,7 +394,13 @@ $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('helvetica', '', 12);
 $pdf->MultiCell(186,55, "Notes: \n$notes", 1, '', 0, 1, 15, 15, true);
 
-$pdf->Output('/fee.pdf', 'F');
+$pdf->Output('/fee.pdf', 'F');              //Since I am sending this pdf directly to a printer when 
+                                            //the user clicks 'print', I output the pdf to File. This 
+                                            //means that the user won't see the pdf before it is printed.
+                                            //This was specifically requested for my workplace because 
+                                            //they were tired of having to click "print" twice :/ (once in 
+                                            //the web form, once in Acrobat/browser print dialogue)
+
 //$pdf->Output('/fee.pdf', 'I');            //if you want to view the pdf on your browser, use this
 
 if (intval(substr($projectNumber, 0, 2))) {
