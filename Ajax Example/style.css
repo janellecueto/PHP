@@ -1,0 +1,8 @@
+.centered{
+    display: block;
+    width: 450px;
+    margin: auto;
+}
+input{
+    margin: 2px;
+}

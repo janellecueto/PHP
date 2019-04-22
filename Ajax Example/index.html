@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js"></script>
+    <title>Print Label</title>
+</head>
+<body>
+    <div class="centered">
+        <h1 class="title">Print Label/Envelope</h1>
+        <form method="post">
+                <input type="text" name="jobnumber" id="jobn" placeholder="Job Number" value="" onchange="handleInput('1', this.value)"/><br />
+                <input type="text" name="clientcode" id="clientc" placeholder="Client Code" value="" list="possibleClients" oninput="handleInput('2', this.value);" />
+                <datalist id="possibleClients"></datalist>
+                <br /><br />
+                <input type="text" name="comp" id="cname" placeholder="Company" size="40" list="possibleCompanies"/>
+                <datalist id="possibleCompanies"></datalist>
+                <br />
+                <input type="text" name="addr1" id="addr1" placeholder="Address Line 1" size="40" />
+                <br />
+                <input type="text" name="addr2" id="addr2" placeholder="Address Line 2" size="40" />
+                <br />
+                <input type="text" name="city" id="cityin" placeholder="City" size="40" />
+                <br />
+                <input type="text" id="statein" placeholder="State"/>
+                <br />
+                <input type="text" id="zipin" placeholder="Zip" /> 
+                <br />
+                <br />
+                <input type="text" id="cln" list="clientname" placeholder="Attention" size="40" 
+                onchange="checkSignature(this, this.value)" />
+                <datalist id="clientname"></datalist>
+                <br />
+                <br>
+                <input class="button" type="button" value="Print Envelope" onclick="printLbl('e')"/>
+                <input class="button" type="button" value="Print Label" onclick="printLbl('l')" />
+                <input class="button" type="button" value="Cancel" onclick="window.parent.closeModal('printLbl')" />
+                
+            </form>
+    </div>
+</body>
+</html>
