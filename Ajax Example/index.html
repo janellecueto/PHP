@@ -12,31 +12,31 @@
     <div class="centered">
         <h1 class="title">Print Label/Envelope</h1>
         <form method="post">
-                <input type="text" name="jobnumber" id="jobn" placeholder="Job Number" value="" onchange="handleInput('1', this.value)"/><br />
-                <input type="text" name="clientcode" id="clientc" placeholder="Client Code" value="" list="possibleClients" oninput="handleInput('2', this.value);" />
-                <datalist id="possibleClients"></datalist>
-                <br /><br />
-                <input type="text" name="comp" id="cname" placeholder="Company" size="40" list="possibleCompanies"/>
-                <datalist id="possibleCompanies"></datalist>
-                <br />
+                <input type="text" name="jobnumber" id="jobn" placeholder="Job Number" value="" 
+                onchange="handleInput(1, this.value)"/><br>
+                <input type="text" name="clientcode" id="clientc" placeholder="Client Code" value=""
+                oninput="handleInput(2, this.value);" />
+                <br><br>
+                <input type="text" name="comp" id="cname" placeholder="Company" size="40"/>
+                <br>
                 <input type="text" name="addr1" id="addr1" placeholder="Address Line 1" size="40" />
-                <br />
+                <br>
                 <input type="text" name="addr2" id="addr2" placeholder="Address Line 2" size="40" />
-                <br />
+                <br>
                 <input type="text" name="city" id="cityin" placeholder="City" size="40" />
-                <br />
+                <br>
                 <input type="text" id="statein" placeholder="State"/>
-                <br />
+                <br>
                 <input type="text" id="zipin" placeholder="Zip" /> 
-                <br />
-                <br />
+                <br>
+                <br>
                 <input type="text" id="cln" list="clientname" placeholder="Attention" size="40" 
                 onchange="checkSignature(this, this.value)" />
                 <datalist id="clientname"></datalist>
-                <br />
                 <br>
-                <input class="button" type="button" value="Print Envelope" onclick="printLbl('e')"/>
-                <input class="button" type="button" value="Print Label" onclick="printLbl('l')" />
+                <br>
+                <input class="button" type="button" value="Print Envelope" onclick="printLbl('env')"/>
+                <input class="button" type="button" value="Print Label" onclick="printLbl('lbl')" />
                 <input class="button" type="button" value="Cancel" onclick="window.parent.closeModal('printLbl')" />
                 
             </form>
