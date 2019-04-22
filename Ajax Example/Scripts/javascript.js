@@ -1,11 +1,12 @@
 function handleInput(field, str){
     if(!str){       //if there is no value entered 
-        clearFields();
+        clearFields();      //clear and return back to the form
     }
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(){
-        if(this.readyStat === 4 && this.status === 200){
+    let xhttp = new XMLHttpRequest();           //create new XMLHttpRequest
 
+    xhttp.onreadystatechange = function(){      //this will call function() whenever the page's state is changed and ready
+        if(this.readyState === 4 && this.status === 200){           //if everything is OK from the call, we can change the page's 
+                                                                    //behavior or elements
             let jsonResponse = JSON.parse(xhttp.response); 
 
             document.getElementById('cname').value = jsonResponse['company'];
@@ -21,7 +22,7 @@ function handleInput(field, str){
         }
     };
 
-    let openStr = "fillInfo.php?";
+    let openStr = "fillInfo.php?";              //location that we are opening 
     if(field === 1){
         //if we're filling info based on job number
         openStr += "jn="+str;
@@ -31,8 +32,8 @@ function handleInput(field, str){
         openStr += "cc="+str;
     }
 
-    xhttp.open('GET', openStr, true);
-    xhttp.send();
+    xhttp.open('GET', openStr, true);           //open our php location
+    xhttp.send();                               //send our request
 }
 
 function clearFields(){
