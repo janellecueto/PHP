@@ -28,7 +28,7 @@
             <ul>
                 <li>Given someone's initials and their company's client code, queries for their full name to be displayed in the form</li>
             </ul>
-        <li>
+        </li>
         <li><b>Scripts/sendToEnvelopePrinter</b>
             <ul><li>Writes PCL directly to a printer on the server to print out an envelope</li></ul>
         </li>
