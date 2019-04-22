@@ -19,6 +19,8 @@ else{
 
 $result = $conn->query($query);
 $row = $result->fetch_array();
-echo $row['name'];
+
+echo $row['name']; //echo back to javascript.js
+
 $result->free();
 mysqli_close($conn);

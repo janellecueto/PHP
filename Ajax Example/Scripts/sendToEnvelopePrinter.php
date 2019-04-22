@@ -3,6 +3,8 @@
 /**
  * This script is kind of cool because it writes PCL directly to the printer on the server to 
  * bust out an envelope. I had to use a giant book on PCL to figure this out.
+ * 
+ * NOTE: this is similar to PHP/fwrite.php so it uses the same topics
  */
 
 $q = $_GET['q']; //supposedly an array from printLbl

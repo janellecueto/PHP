@@ -8,6 +8,14 @@
  * It is NOT a standalone script as it requires a variable 'q' to be passed
  * via HTTP method GET.
  * 
+ * Topics:
+ *  Filesystem functions
+ *      fopen($filename, $mode)     ->  file pointer resource (handle) or FALSE on error
+ *      fwrite($handle, $string)    ->  number of bytes written or FALSE on error
+ *      fclose($handle)             ->  TRUE or FALSE
+ *  Other
+ *      json_decode($string, $assoc)    -> json $string in the appropriate PHP type (array, dict, etc.)
+ *      sizeof($object)             ->  in this case, number of elements in an array
  */ 
 
 
